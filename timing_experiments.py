@@ -4,6 +4,7 @@ from Q4.Q4 import farthest_pair
 from Q5.Q5 import fastest_3sum
 from glob import glob
 from time import time
+from matplotlib import pyplot as plt
 
 
 def three_sum_timing():
@@ -12,8 +13,20 @@ def three_sum_timing():
     binary_search_3sum([1,2,3])
     fastest_3sum([1,2,3])
     end_time = time()
-    time_elasped = end_time - start_time
-    print(time_elasped)
+    time_elapsed = end_time - start_time
+    print(time_elapsed)
+
+    brute_force_time_elapsed = [10, 20, 30, 40, 50, 60, 70, 80]
+    binary_search_time_elapsed = [1, 2, 3, 4, 5, 6, 7, 8]
+    fastest_time_elapsed = [1, 2, 3, 4, 5, 6, 7, 8]
+
+    file_sizes = [8, 32, 128, 512, 1024, 4096, 4192, 8192]
+    plt.plot(file_sizes, brute_force_time_elapsed)
+    plt.plot(file_sizes, binary_search_time_elapsed)
+    plt.plot(file_sizes, fastest_time_elapsed)
+    # plt.legend()
+    # plt.title()
+    plt.show()
     pass
 
 
@@ -33,8 +46,20 @@ def union_find_timing():
             C.union(left, right)
 
     end_time = time()
-    time_elasped = end_time - start_time
-    print(time_elasped)
+    time_elapsed = end_time - start_time
+    print(time_elapsed)
+
+    qf_time_elapsed = [10, 20, 30, 40, 50, 60, 70]
+    qu_time_elapsed = [1, 2, 3, 4, 5, 6, 7]
+    qub_time_elapsed = [1, 2, 3, 4, 5, 6, 7]
+
+    file_sizes = [8, 32, 128, 512, 1024, 4096, 8192]
+    plt.plot(file_sizes, qf_time_elapsed)
+    plt.plot(file_sizes, qu_time_elapsed)
+    plt.plot(file_sizes, qub_time_elapsed)
+    # plt.legend()
+    # plt.title()
+    plt.show()
     pass
 
 
@@ -42,8 +67,16 @@ def farthest_pair_timing():
     start_time = time()
     farthest_pair([1,2,3])
     end_time = time()
-    time_elasped = end_time - start_time
-    print(time_elasped)
+    time_elapsed = end_time - start_time
+    print(time_elapsed)
+
+    fpair_time_elapsed = [1, 2, 3, 4, 5, 6, 7, 8]
+    file_sizes = [8, 32, 128, 512, 1024, 4096, 4192, 8192]
+
+    plt.plot(file_sizes, fpair_time_elapsed)
+    # plt.legend()
+    # plt.title()
+    plt.show()
     pass
 
 
