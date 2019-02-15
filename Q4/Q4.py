@@ -3,8 +3,13 @@ import os
 
 
 def farthest_pair(a):
-    min_value = min(a)
-    max_value = max(a)
+    min_value = float('-inf') # min(a)
+    max_value = float('inf') # max(a)
+    for index in range(0, len(a), 1):
+        if a[index] > min_value:
+            min_value = a[index]
+        if a[index] < max_value:
+            max_value = a[index]
     print("Farthest pair is {} and {} with a distance of {}".format(min_value, max_value, abs(max_value-min_value)))
 
 

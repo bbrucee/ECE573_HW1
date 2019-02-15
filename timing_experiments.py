@@ -9,19 +9,19 @@ import os
 
 
 def three_sum_timing():
+    input_size = []
     brute_force_time_elapsed = []
     binary_search_time_elapsed = []
     fastest_time_elapsed = []
-    input_size = []
-    
+
     for datapath in glob(os.getcwd() + "\Q1\data\*"):
-        input_size.append(datapath.split("\\")[-1].split("int")[0])
+        input_size.append(int(datapath.split("\\")[-1].split("int")[0]))
         file = open(datapath)
         data_array = []
         for line in file.readlines():
             data_array.append(int(line))
         file.close()
-
+        print(datapath)
         start_time = time()
         brute_force_3sum(data_array)
         end_time = time()
@@ -35,11 +35,12 @@ def three_sum_timing():
         end_time = time()
         fastest_time_elapsed.append(end_time - start_time)
 
+    input_size, brute_force_time_elapsed, binary_search_time_elapsed, fastest_time_elapsed = zip(*sorted(zip(input_size, brute_force_time_elapsed, binary_search_time_elapsed, fastest_time_elapsed)))
     columns = ('Brute Force 3 Sum', 'Binary Search 3 Sum', 'Fastest 3 Sum')
     rows = ["{} integers".format(x) for x in input_size]
     cell_text = []
     for time_tuple in zip(brute_force_time_elapsed, binary_search_time_elapsed, fastest_time_elapsed):
-        cell_text.append(["{} seconds".format(time_data) for time_data in time_tuple])
+        cell_text.append(["{0:.10f} seconds".format(time_data) for time_data in time_tuple])
 
     fig = plt.figure(1)
     plt.suptitle("Q1 and Q5: 3 Sum Timing Graphs")
@@ -67,59 +68,127 @@ def three_sum_timing():
 
     fig.set_size_inches(w=6, h=5)
     plt.show()
-    pass
 
 
 def union_find_timing():
-    start_time = time()
 
-    A = UFQuickfind(8192)
-    B = UFQuickunion(8192)
-    C = UFQuickunionbalanced(8192)
+    qf = UFQuickfind(8192)
+    qu = UFQuickunion(8192)
+    qub = UFQuickunionbalanced(8192)
 
-    for (left, right) in [(1,2), (2,3), (3,4)]:
-        if not A.find(left, right):
-            A.union(left, right)
-        if not B.find(left, right):
-            B.union(left, right)
-        if not C.find(left, right):
-            C.union(left, right)
+    input_size = []
+    qf_time_elapsed = []
+    qu_time_elapsed = []
+    qub_time_elapsed = []
 
-    end_time = time()
-    time_elapsed = end_time - start_time
-    print(time_elapsed)
+    for datapath in glob(os.getcwd() + "\Q2\data\*"):
+        input_size.append(int(datapath.split("\\")[-1].split("pair")[0]))
+        file = open(datapath)
+        data_array = []
+        for line in file.readlines():
+            data_array.append(tuple(map(int, line.split())))
+        file.close()
+        print(datapath)
 
-    qf_time_elapsed = [10, 20, 30, 40, 50, 60, 70]
-    qu_time_elapsed = [1, 2, 3, 4, 5, 6, 7]
-    qub_time_elapsed = [1, 2, 3, 4, 5, 6, 7]
+        start_time = time()
+        for (left, right) in data_array:
+            if not qf.find(left, right):
+                qf.union(left, right)
+        end_time = time()
+        qf_time_elapsed.append(end_time-start_time)
 
-    file_sizes = [8, 32, 128, 512, 1024, 4096, 8192]
-    plt.plot(file_sizes, qf_time_elapsed)
-    plt.plot(file_sizes, qu_time_elapsed)
-    plt.plot(file_sizes, qub_time_elapsed)
-    # plt.legend()
-    # plt.title()
+        start_time = time()
+        for (left, right) in data_array:
+            if not qu.find(left, right):
+                qu.union(left, right)
+        end_time = time()
+        qu_time_elapsed.append(end_time-start_time)
+
+        start_time = time()
+        for (left, right) in data_array:
+            if not qub.find(left, right):
+                qub.union(left, right)
+        end_time = time()
+        qub_time_elapsed.append(end_time-start_time)
+
+    input_size, qf_time_elapsed, qu_time_elapsed, qub_time_elapsed = zip(
+        *sorted(zip(input_size, qf_time_elapsed, qu_time_elapsed, qub_time_elapsed)))
+    columns = ('Quick Find', 'Quick Union', 'Quick Union Balanced')
+    rows = ["{} pairs".format(x) for x in input_size]
+    cell_text = []
+    for time_tuple in zip(qf_time_elapsed, qu_time_elapsed, qub_time_elapsed):
+        cell_text.append(["{0:.10f} seconds".format(time_data) for time_data in time_tuple])
+
+    fig = plt.figure(1)
+    plt.suptitle("Q2: Union-Find Graphs")
+    fig.subplots_adjust(left=0.2, top=0.8, wspace=1)
+
+    ax = plt.subplot2grid((2, 3), (1, 0), colspan=4, rowspan=2)
+    ax.table(cellText=cell_text, rowLabels=rows, colLabels=columns, loc='upper center')
+    ax.axis("off")
+
+    plt.subplot2grid((2, 3), (0, 0))
+    plt.plot(input_size, qf_time_elapsed)
+    plt.title("Union-Find: Quick Find")
+    plt.xlabel("Input Size (Number of Pairs)")
+    plt.ylabel("Runtime (seconds)")
+    plt.subplot2grid((2, 3), (0, 1))
+    plt.plot(input_size, qu_time_elapsed)
+    plt.title("Union-Find: Quick Union")
+    plt.xlabel("Input Size (Number of Pairs)")
+    plt.ylabel("Runtime (seconds)")
+    plt.subplot2grid((2, 3), (0, 2))
+    plt.plot(input_size, qub_time_elapsed)
+    plt.title("Union-Find: Quick Union Balanced")
+    plt.xlabel("Input Size (Number of Pairs)")
+    plt.ylabel("Runtime (seconds)")
+
+    fig.set_size_inches(w=6, h=5)
     plt.show()
-    pass
 
 
 def farthest_pair_timing():
-    start_time = time()
-    farthest_pair([1,2,3])
-    end_time = time()
-    time_elapsed = end_time - start_time
-    print(time_elapsed)
+    input_size = []
+    fpair_time_elapsed = []
 
-    fpair_time_elapsed = [1, 2, 3, 4, 5, 6, 7, 8]
-    file_sizes = [8, 32, 128, 512, 1024, 4096, 4192, 8192]
+    for datapath in glob(os.getcwd() + "\Q4\data\*"):
+        input_size.append(int(datapath.split("\\")[-1].split("int")[0]))
+        file = open(datapath)
+        data_array = []
+        for line in file.readlines():
+            data_array.append(int(line))
+        file.close()
+        print(datapath)
+        start_time = time()
+        farthest_pair(data_array)
+        end_time = time()
+        fpair_time_elapsed.append((end_time - start_time))
 
-    plt.plot(file_sizes, fpair_time_elapsed)
-    # plt.legend()
-    # plt.title()
+    input_size, fpair_time_elapsed = zip(*sorted(zip(input_size, fpair_time_elapsed)))
+    columns = ('Farthest Pair', )
+    rows = ["{} integers".format(x) for x in input_size]
+    cell_text = []
+    for time_tuple in zip(fpair_time_elapsed):
+        cell_text.append(["{} seconds".format(time_data) for time_data in time_tuple])
+
+    fig = plt.figure(1)
+    plt.suptitle("Q4: Farthest Pair Timing Graph")
+    fig.subplots_adjust(left=0.2, top=0.8, wspace=1)
+
+    ax = plt.subplot2grid((2, 2), (1, 0), colspan=2, rowspan=1)
+    ax.table(cellText=cell_text, rowLabels=rows, colLabels=columns, loc='upper center')
+    ax.axis("off")
+
+    plt.subplot2grid((2, 2), (0, 0),  colspan=2, rowspan=1)
+    plt.plot(input_size, fpair_time_elapsed)
+    plt.title("Farthest Pair")
+    plt.xlabel("Input Size (Length of Array)")
+    plt.ylabel("Runtime (seconds)")
+
+    fig.set_size_inches(w=6, h=5)
     plt.show()
-    pass
 
 
 three_sum_timing()
-# union_find_timing()
-# farthest_pair_timing()
+union_find_timing()
+farthest_pair_timing()
