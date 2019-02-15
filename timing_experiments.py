@@ -12,6 +12,7 @@ import os
 # USE pandas FOR TABLES AND PLOTS IT WILL MAKE LIFE EASIER
 # END NOTICE
 
+
 def three_sum_timing():
     input_size = []
     brute_force_time_elapsed = []
@@ -193,6 +194,11 @@ def farthest_pair_timing():
     plt.show()
 
 
-# three_sum_timing()
-union_find_timing()
-farthest_pair_timing()
+def main():
+    three_sum_timing()
+    union_find_timing()
+    farthest_pair_timing()
+
+
+if __name__ == '__main__':
+    main()
