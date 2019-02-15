@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e69b18c8-deaa-463c-a1ff-4319ef8ad4d5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Q4/Q4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Q4/Q4.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/timing_experiments.py" beforeDir="false" afterPath="$PROJECT_DIR$/timing_experiments.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,11 +64,8 @@
       <file leaf-file-name="timing_experiments.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/timing_experiments.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="192" column="18" lean-forward="true" selection-start-line="192" selection-start-column="18" selection-end-line="192" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -312,11 +308,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/timing_experiments.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="192" column="18" lean-forward="true" selection-start-line="192" selection-start-column="18" selection-end-line="192" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>

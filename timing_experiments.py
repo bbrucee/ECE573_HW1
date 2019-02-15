@@ -3,10 +3,14 @@ from Q2.Q2 import UFQuickfind, UFQuickunion, UFQuickunionbalanced
 from Q4.Q4 import farthest_pair
 from Q5.Q5 import fastest_3sum
 from glob import glob
-from time import time
+from time import clock
 from matplotlib import pyplot as plt
 import os
 
+# URGENT NOTICE TO FUTURE ME
+# FOR FUTURE ASSIGNMENTS USE timeit AND FUNCTIONS SIMILAR TO THE main OF EACH .py
+# USE pandas FOR TABLES AND PLOTS IT WILL MAKE LIFE EASIER
+# END NOTICE
 
 def three_sum_timing():
     input_size = []
@@ -22,17 +26,17 @@ def three_sum_timing():
             data_array.append(int(line))
         file.close()
         print(datapath)
-        start_time = time()
+        start_time = clock()
         brute_force_3sum(data_array)
-        end_time = time()
+        end_time = clock()
         brute_force_time_elapsed.append(end_time - start_time)
-        start_time = time()
+        start_time = clock()
         binary_search_3sum(data_array)
-        end_time = time()
+        end_time = clock()
         binary_search_time_elapsed.append(end_time - start_time)
-        start_time = time()
+        start_time = clock()
         fastest_3sum(data_array)
-        end_time = time()
+        end_time = clock()
         fastest_time_elapsed.append(end_time - start_time)
 
     input_size, brute_force_time_elapsed, binary_search_time_elapsed, fastest_time_elapsed = zip(*sorted(zip(input_size, brute_force_time_elapsed, binary_search_time_elapsed, fastest_time_elapsed)))
@@ -90,25 +94,25 @@ def union_find_timing():
         file.close()
         print(datapath)
 
-        start_time = time()
+        start_time = clock()
         for (left, right) in data_array:
             if not qf.find(left, right):
                 qf.union(left, right)
-        end_time = time()
+        end_time = clock()
         qf_time_elapsed.append(end_time-start_time)
 
-        start_time = time()
+        start_time = clock()
         for (left, right) in data_array:
             if not qu.find(left, right):
                 qu.union(left, right)
-        end_time = time()
+        end_time = clock()
         qu_time_elapsed.append(end_time-start_time)
 
-        start_time = time()
+        start_time = clock()
         for (left, right) in data_array:
             if not qub.find(left, right):
                 qub.union(left, right)
-        end_time = time()
+        end_time = clock()
         qub_time_elapsed.append(end_time-start_time)
 
     input_size, qf_time_elapsed, qu_time_elapsed, qub_time_elapsed = zip(
@@ -159,9 +163,9 @@ def farthest_pair_timing():
             data_array.append(int(line))
         file.close()
         print(datapath)
-        start_time = time()
+        start_time = clock()
         farthest_pair(data_array)
-        end_time = time()
+        end_time = clock()
         fpair_time_elapsed.append((end_time - start_time))
 
     input_size, fpair_time_elapsed = zip(*sorted(zip(input_size, fpair_time_elapsed)))
@@ -189,6 +193,6 @@ def farthest_pair_timing():
     plt.show()
 
 
-three_sum_timing()
+# three_sum_timing()
 union_find_timing()
 farthest_pair_timing()
