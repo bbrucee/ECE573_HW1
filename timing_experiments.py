@@ -7,9 +7,11 @@ from time import clock
 from matplotlib import pyplot as plt
 import os
 
+
 # URGENT NOTICE TO FUTURE ME
 # FOR FUTURE ASSIGNMENTS USE timeit AND FUNCTIONS SIMILAR TO THE main OF EACH .py
 # USE pandas FOR TABLES AND PLOTS IT WILL MAKE LIFE EASIER
+# RUN AND AVERAGE TRIALS FOR EACH ONE TOO
 # END NOTICE
 
 
@@ -27,13 +29,13 @@ def three_sum_timing():
             data_array.append(int(line))
         file.close()
         print(datapath)
-        if not int(datapath.split("\\")[-1].split("int")[0]) == 8192:
+        if not int(datapath.split("\\")[-1].split("int")[0]) == 8192 or not int(datapath.split("\\")[-1].split("int")[0]) == 4096:
             start_time = clock()
             brute_force_3sum(data_array)
             end_time = clock()
             brute_force_time_elapsed.append(end_time - start_time)
-
-        brute_force_time_elapsed.append(0)
+        else:
+            brute_force_time_elapsed.append("DNF")
         start_time = clock()
         binary_search_3sum(data_array)
         end_time = clock()
@@ -59,7 +61,7 @@ def three_sum_timing():
     ax.axis("off")
 
     plt.subplot2grid((2, 3), (0, 0))
-    plt.plot(input_size[:-1], brute_force_time_elapsed[:-1])
+    plt.plot(input_size[:-2], brute_force_time_elapsed[:-2])
     plt.title("Brute Force 3 Sum")
     plt.xlabel("Input Size (Length of Array)")
     plt.ylabel("Runtime (seconds)")
@@ -80,16 +82,16 @@ def three_sum_timing():
 
 def union_find_timing():
 
-    qf = UFQuickfind(8192)
-    qu = UFQuickunion(8192)
-    qub = UFQuickunionbalanced(8192)
-
     input_size = []
     qf_time_elapsed = []
     qu_time_elapsed = []
     qub_time_elapsed = []
 
     for datapath in glob(os.getcwd() + "\Q2\data\*"):
+        qf = UFQuickfind(8192)
+        qu = UFQuickunion(8192)
+        qub = UFQuickunionbalanced(8192)
+
         input_size.append(int(datapath.split("\\")[-1].split("pair")[0]))
         file = open(datapath)
         data_array = []
@@ -158,8 +160,10 @@ def union_find_timing():
 def farthest_pair_timing():
     input_size = []
     fpair_time_elapsed = []
+    num_trials = 100
 
     for datapath in glob(os.getcwd() + "\Q4\data\*"):
+        fpair_trials = []
         input_size.append(int(datapath.split("\\")[-1].split("int")[0]))
         file = open(datapath)
         data_array = []
@@ -167,10 +171,12 @@ def farthest_pair_timing():
             data_array.append(int(line))
         file.close()
         print(datapath)
-        start_time = clock()
-        farthest_pair(data_array)
-        end_time = clock()
-        fpair_time_elapsed.append((end_time - start_time))
+        for _ in range(num_trials):
+            start_time = clock()
+            farthest_pair(data_array)
+            end_time = clock()
+            fpair_trials.append(end_time - start_time)
+        fpair_time_elapsed.append(sum(fpair_trials)/num_trials)
 
     input_size, fpair_time_elapsed = zip(*sorted(zip(input_size, fpair_time_elapsed)))
     columns = ('Farthest Pair', )
