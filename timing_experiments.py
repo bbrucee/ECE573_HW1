@@ -27,10 +27,13 @@ def three_sum_timing():
             data_array.append(int(line))
         file.close()
         print(datapath)
-        start_time = clock()
-        brute_force_3sum(data_array)
-        end_time = clock()
-        brute_force_time_elapsed.append(end_time - start_time)
+        if not int(datapath.split("\\")[-1].split("int")[0]) == 8192:
+            start_time = clock()
+            brute_force_3sum(data_array)
+            end_time = clock()
+            brute_force_time_elapsed.append(end_time - start_time)
+
+        brute_force_time_elapsed.append(0)
         start_time = clock()
         binary_search_3sum(data_array)
         end_time = clock()
@@ -56,7 +59,7 @@ def three_sum_timing():
     ax.axis("off")
 
     plt.subplot2grid((2, 3), (0, 0))
-    plt.plot(input_size, brute_force_time_elapsed)
+    plt.plot(input_size[:-1], brute_force_time_elapsed[:-1])
     plt.title("Brute Force 3 Sum")
     plt.xlabel("Input Size (Length of Array)")
     plt.ylabel("Runtime (seconds)")
