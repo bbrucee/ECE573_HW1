@@ -29,17 +29,21 @@ def three_sum_timing():
             data_array.append(int(line))
         file.close()
         print(datapath)
-        if not int(datapath.split("\\")[-1].split("int")[0]) == 8192 or not int(datapath.split("\\")[-1].split("int")[0]) == 4096:
+        if int(datapath.split("\\")[-1].split("int")[0]) != 8192 and int(datapath.split("\\")[-1].split("int")[0]) != 4096:
             start_time = clock()
             brute_force_3sum(data_array)
             end_time = clock()
             brute_force_time_elapsed.append(end_time - start_time)
         else:
-            brute_force_time_elapsed.append("DNF")
-        start_time = clock()
-        binary_search_3sum(data_array)
-        end_time = clock()
-        binary_search_time_elapsed.append(end_time - start_time)
+            brute_force_time_elapsed.append(float('nan'))
+        if int(datapath.split("\\")[-1].split("int")[0]) != 8192:
+            start_time = clock()
+            binary_search_3sum(data_array)
+            end_time = clock()
+            binary_search_time_elapsed.append(end_time - start_time)
+        else:
+            binary_search_time_elapsed.append(float('nan'))
+
         start_time = clock()
         fastest_3sum(data_array)
         end_time = clock()
@@ -66,7 +70,7 @@ def three_sum_timing():
     plt.xlabel("Input Size (Length of Array)")
     plt.ylabel("Runtime (seconds)")
     plt.subplot2grid((2, 3), (0, 1))
-    plt.plot(input_size, binary_search_time_elapsed)
+    plt.plot(input_size[:-1], binary_search_time_elapsed[:-1])
     plt.title("Binary Search 3 Sum")
     plt.xlabel("Input Size (Length of Array)")
     plt.ylabel("Runtime (seconds)")
