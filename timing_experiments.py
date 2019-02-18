@@ -6,7 +6,7 @@ from glob import glob
 from time import clock
 from matplotlib import pyplot as plt
 import os
-
+import random
 
 # URGENT NOTICE TO FUTURE ME
 # FOR FUTURE ASSIGNMENTS USE timeit AND FUNCTIONS SIMILAR TO THE main OF EACH .py
@@ -162,19 +162,14 @@ def union_find_timing():
 
 
 def farthest_pair_timing():
-    input_size = []
     fpair_time_elapsed = []
     num_trials = 100
-
-    for datapath in glob(os.getcwd() + "\Q4\data\*"):
+    input_size = [8,16,64,256,1024,4096,8192,16384,32768,65536]
+    for i_size in input_size:
         fpair_trials = []
-        input_size.append(int(datapath.split("\\")[-1].split("int")[0]))
-        file = open(datapath)
         data_array = []
-        for line in file.readlines():
-            data_array.append(int(line))
-        file.close()
-        print(datapath)
+        for line in range(i_size):
+            data_array.append(random.uniform(0,10000))
         for _ in range(num_trials):
             start_time = clock()
             farthest_pair(data_array)
@@ -184,7 +179,7 @@ def farthest_pair_timing():
 
     input_size, fpair_time_elapsed = zip(*sorted(zip(input_size, fpair_time_elapsed)))
     columns = ('Farthest Pair', )
-    rows = ["{} integers".format(x) for x in input_size]
+    rows = ["{} doubles".format(x) for x in input_size]
     cell_text = []
     for time_tuple in zip(fpair_time_elapsed):
         cell_text.append(["{} seconds".format(time_data) for time_data in time_tuple])
