@@ -28,7 +28,6 @@ def three_sum_timing():
         for line in file.readlines():
             data_array.append(int(line))
         file.close()
-        print(datapath)
         if int(datapath.split("\\")[-1].split("int")[0]) != 8192 and int(datapath.split("\\")[-1].split("int")[0]) != 4096:
             start_time = clock()
             brute_force_3sum(data_array)
@@ -80,7 +79,7 @@ def three_sum_timing():
     plt.xlabel("Input Size (Length of Array)")
     plt.ylabel("Runtime (seconds)")
 
-    fig.set_size_inches(w=6, h=5)
+    fig.set_size_inches(w=12, h=10)
     plt.show()
 
 
@@ -102,7 +101,6 @@ def union_find_timing():
         for line in file.readlines():
             data_array.append(tuple(map(int, line.split())))
         file.close()
-        print(datapath)
 
         start_time = clock()
         for (left, right) in data_array:
@@ -157,7 +155,7 @@ def union_find_timing():
     plt.xlabel("Input Size (Number of Pairs)")
     plt.ylabel("Runtime (seconds)")
 
-    fig.set_size_inches(w=6, h=5)
+    fig.set_size_inches(w=12, h=10)
     plt.show()
 
 
@@ -198,7 +196,7 @@ def farthest_pair_timing():
     plt.xlabel("Input Size (Length of Array)")
     plt.ylabel("Runtime (seconds)")
 
-    fig.set_size_inches(w=6, h=5)
+    fig.set_size_inches(w=12, h=10)
     plt.show()
 
 
