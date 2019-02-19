@@ -1,6 +1,9 @@
 # ECE573_HW1
+
 Homework 1 for Rutgers ECE 573: Data Structures and Algorithms
+
 By Brendan Bruce
+
 Written and Tested on Python 3.5.6
 
 **Q\* Folders** contain **Q\*.py** scripts and necessary data files to run scripts
