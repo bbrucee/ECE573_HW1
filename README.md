@@ -3,7 +3,7 @@ Homework 1 for Rutgers ECE 573: Data Structures and Algorithms
 By Brendan Bruce
 Written and Tested on Python 3.5.6
 
-**Q* Folders** contain **Q*.py** scripts and necessary data files to run scripts
+**Q\* Folders** contain **Q\*.py** scripts and necessary data files to run scripts
 
 **timing_experiments.py** runs scripts on varying data sizes and generates a figure to display the results
 
