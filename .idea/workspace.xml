@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e69b18c8-deaa-463c-a1ff-4319ef8ad4d5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/HW1_Report-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/HW1_Report-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW1_Report.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HW1_Report.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW1_Workbook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HW1_Workbook.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,8 +64,8 @@
       <file leaf-file-name="timing_experiments.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/timing_experiments.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1850">
-              <caret line="200" selection-start-line="200" selection-end-line="200" />
+            <state relative-caret-position="187">
+              <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -104,9 +102,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="698" />
-    <option name="y" value="145" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -115,7 +112,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,6 +161,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -269,7 +266,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="698" y="145" width="974" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="1" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553419" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -789,8 +786,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/timing_experiments.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1850">
-          <caret line="200" selection-start-line="200" selection-end-line="200" />
+        <state relative-caret-position="187">
+          <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
